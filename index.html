@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Multiplication Table Generator</title>
+</head>
+<body>
+
+<form id="form">
+  <label for="strnum">Minimum:</label>
+  <input type="number" id="strnum" name="strnum" min="2" max="10">
+  <label for="endnum">Maximum:</label>
+  <input type="number" id="endnum" name="endnum" min="2" max="10">
+  <button type="button" onclick="generateTable()">Generate Table</button>
+</form>
+
+<div id="output"></div>
+
+<script>
+function generateTable() {
+  var strnum = parseInt(document.getElementById("strnum").value);
+  var endnum = parseInt(document.getElementById("endnum").value);
+  var outputDiv = document.getElementById("output");
+
+  if (isNaN(strnum) || isNaN(endnum) || strnum < 2 || endnum < 2 || strnum > 10 || endnum > 10) {
+    alert("Please enter numbers between 2 and 10");
+    return;
+  }
+
+  var tableHTML = "<table border='1'>";
+  for (var i = 1; i <= 10; i++) {
+    tableHTML += "<tr>";
+    for (var j = strnum; j <= endnum; j++) {
+      tableHTML += "<td>" + j + " x " + i + " = " + (i * j) + "</td>";
+    }
+    tableHTML += "</tr>";
+  }
+  tableHTML += "</table>";
+
+  outputDiv.innerHTML = tableHTML;
+}
+</script>
+
+</body>
+</html>
